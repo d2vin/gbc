@@ -1,0 +1,73 @@
+.socialMedia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.sci {
+  position: relative;
+  display: flex;
+}
+
+.sci li {
+  list-style: none;
+  position: relative;
+  bottom: 100px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 20px;
+  font-size: 4em;
+  font-family: "Regular", sans-serif;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+  transition: background 0.5s;
+  color: #333;
+}
+
+.sci li:hover {
+  transition: 0.5s;
+  color: #fff;
+}
+
+.sci li::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vh;
+  pointer-events: none;
+  font-weight: 700;
+  transition: 0.25s;
+  opacity: 0;
+}
+
+.sci li:hover::before {
+  opacity: 0.2;
+  transform: translate(-50%, calc(-50% + 80px));
+}
+
+.sci .linkedin:hover {
+  background: #0e76a8;
+}
+
+.sci .discord:hover {
+  background: #5865f2;
+}
+
+.sci .twitter:hover {
+  background: #1da1f2;
+}
+
+.sci .fa {
+  transition: 0.5s;
+  pointer-events: none;
+}
