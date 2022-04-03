@@ -33,21 +33,21 @@ const Card = (props) => {
               <ul className={styles.sci}>
                 <li>
                   <div className={styles.centered}>
-                    <Link href="#">
+                    <Link href="#" passHref>
                       <FaLinkedin />
                     </Link>
                   </div>
                 </li>
                 <li>
                   <div className={styles.centered}>
-                    <Link href="#">
+                    <Link href="#" passHref>
                       <FaLinkedin />
                     </Link>
                   </div>
                 </li>
                 <li>
                   <div className={styles.centered}>
-                    <Link href="#">
+                    <Link href="#" passHref>
                       <FaLinkedin />
                     </Link>
                   </div>
