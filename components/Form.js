@@ -5,10 +5,8 @@ import styles from "../styles/Form.module.css";
 const Form = () => {
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener("load", function () {
+  const handleSubmit = (e) => {
       const form = document.getElementById("myForm");
-      form.addEventListener("submit", function (e) {
         e.preventDefault();
         const data = new FormData(form);
         const action = e.target.action;
@@ -18,9 +16,7 @@ const Form = () => {
         }).then(() => {
           setSubmitted(true);
         });
-      });
-    });
-  });
+  };
 
   return (
     <div className={styles.container}>
@@ -67,7 +63,7 @@ const Form = () => {
             id="twitter"
           />
           <br />
-          <button style={{ border: "none" }} type="submit" name="submit">
+          <button style={{ border: "none" }} type="submit" name="submit" onClick={handleSubmit}>
             {submitted ? "Resubmit" : "Submit"}
           </button>
         </form>

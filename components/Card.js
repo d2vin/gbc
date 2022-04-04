@@ -18,7 +18,7 @@ const Card = (props) => {
                     className={styles.img}
                     width="200px"
                     height="200px"
-                    src={`/../public/team/${props.image}.jpg`}
+                    src={`/../public/${props.image}.jpg`}
                     alt=""
                   />
                 </div>
