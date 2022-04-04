@@ -4,10 +4,6 @@ const nextConfig = {
     domains: ["globalbc.io"],
   },
   reactStrictMode: true,
-  images: {
-    loader: "akamai",
-    path: "/public/images",
-  }
 };
 
 module.exports = nextConfig
