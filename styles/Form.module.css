@@ -207,6 +207,7 @@
   line-height: 1.4em;
   width: 100%;
   color: white;
+  outline: none;
 }
 
 .inputs::placeholder {
@@ -232,3 +233,4 @@
   transition: background-color 5000s ease-in-out 0s;
   color: white;
 }
+

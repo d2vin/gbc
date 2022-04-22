@@ -18,8 +18,9 @@ const Card = (props) => {
                     className={styles.img}
                     width="200px"
                     height="200px"
-                    src={`/../public/${props.image}.jpg`}
+                    src={props.image}
                     alt=""
+                    priority
                   />
                 </div>
                 <div className={styles.box}>

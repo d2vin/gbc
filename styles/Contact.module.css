@@ -8,6 +8,7 @@
 .sci {
   position: relative;
   display: flex;
+  justify-content: center;
 }
 
 .sci li {
@@ -71,3 +72,9 @@
   transition: 0.5s;
   pointer-events: none;
 }
+
+@media screen and (max-width: 600px) {
+  .sci  {
+    flex-direction: column;
+  }
+} /* End of media query */

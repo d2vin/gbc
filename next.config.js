@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["globalbc.io"],
+    domains: ["globalbc.io", "localhost"],
   },
   reactStrictMode: true,
 };

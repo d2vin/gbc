@@ -6,16 +6,17 @@ const Form = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
-      const form = document.getElementById("myForm");
-        e.preventDefault();
-        const data = new FormData(form);
-        const action = e.target.action;
-        fetch(action, {
-          method: "POST",
-          body: data,
-        }).then(() => {
-          setSubmitted(true);
-        });
+    e.preventDefault();
+    const form = document.getElementById("myForm");
+    const data = new FormData(form);
+    const action = e.target.action;
+    console.log(action)
+    fetch(action, {
+      method: "POST",
+      body: data,
+    }).then(() => {
+      setSubmitted(true);
+    });
   };
 
   return (
@@ -25,8 +26,9 @@ const Form = () => {
         <form
           className={styles.content}
           method="POST"
-          action="https://script.google.com/macros/s/AKfycbw85ZYxUkxMOYCLtwCyS2XbAAFhZaDQv7j7pzdef2eGLi4RqQpa8I-1fQbxoMRtbMfK/exec"
+          action="https://script.google.com/a/macros/newschool.edu/s/AKfycbySlQ_I5io0gtlhoEEVDF9FU8J5w_CXhQV0rgmmQnZA/dev"
           id="myForm"
+          onSubmit={handleSubmit}
         >
           <h2>Event Sign-up</h2>
           <input
@@ -63,7 +65,11 @@ const Form = () => {
             id="twitter"
           />
           <br />
-          <button style={{ border: "none" }} type="submit" name="submit" onClick={handleSubmit}>
+          <button
+            style={{ border: "none" }}
+            type="submit"
+            name="submit"
+          >
             {submitted ? "Resubmit" : "Submit"}
           </button>
         </form>
