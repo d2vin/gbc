@@ -14,20 +14,6 @@ import tbaker from "../public/static/tbaker.jpg";
 import umccormack from "../public/static/umccormack.png";
 import wsaunders from "../public/static/wsaunders.jpg";
 
-const names = [
-  "acravero",
-  "cyoon",
-  "echanning",
-  "jgracia",
-  "jho",
-  "jpatchay",
-  "jthomason",
-  "lschneider",
-  "tbaker",
-  "umccormack",
-  "wsaunders",
-];
-
 const Team = () => {
   return (
     <div>
