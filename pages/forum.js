@@ -1,0 +1,142 @@
+import React from "react";
+import Navbar from "../components/Navbar";
+import { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
+import { css } from "@emotion/css";
+import { ethers } from "ethers";
+import { AccountContext } from "../context";
+import Link from "next/link";
+import { contractAddress, ownerAddress } from "../config";
+import Blog from "../artifacts/contracts/Blog.sol/Blog.json";
+import Image from "next/image";
+import rArrow from "../public/static/right-arrow.svg";
+
+const Forum = (props) => {
+  const { posts } = props;
+  const { account, setAccount } = useContext(AccountContext);
+  const router = useRouter();
+  async function navigate() {
+    router.push("/create-post");
+  }
+  async function log() {
+    console.log(account, ownerAddress);
+    console.log(posts);
+  }
+
+  return (
+    <div>
+      <Navbar />
+      <div className={postList}>
+        {
+          /* map over the posts array and render a button with the post title */
+          posts.map((post, index) => (
+            <Link href={`/post/${post[2]}`} key={index}>
+              <a>
+                <div className={linkStyle}>
+                  <p className={postTitle}>{post[1]}</p>
+                  <div className={arrowContainer}>
+                    <Image
+                      src={rArrow}
+                      alt="Right arrow"
+                      width="25"
+                      height="25"
+                      className={smallArrow}
+                    />
+                  </div>
+                </div>
+              </a>
+            </Link>
+          ))
+        }
+      </div>
+      <div className={container}>
+        {account === ownerAddress && posts && (
+          <button className={buttonStyle} onClick={navigate}>
+            create a post
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export async function getServerSideProps() {
+  let provider;
+  if (process.env.ENVIRONMENT === "local") {
+    provider = new ethers.providers.JsonRpcProvider();
+  } else if (process.env.ENVIRONMENT === "testnet") {
+    provider = new ethers.providers.JsonRpcProvider(
+      "https://rpc-mumbai.matic.today"
+    );
+  } else {
+    provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com/");
+  }
+
+  const contract = new ethers.Contract(contractAddress, Blog.abi, provider);
+  const data = await contract.fetchPosts();
+
+  return {
+    props: {
+      posts: JSON.parse(JSON.stringify(data)),
+    },
+  };
+}
+
+export default Forum;
+
+const arrowContainer = css`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  padding-right: 20px;
+`;
+
+const postTitle = css`
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0;
+  padding: 20px;
+`;
+
+const linkStyle = css`
+  /* border: 1px solid #ddd; */
+  margin-top: 20px;
+  border-radius: 8px;
+  display: flex;
+`;
+
+const postList = css`
+  width: 700px;
+  margin: 0 auto;
+  padding-top: 50px;
+`;
+
+const container = css`
+  display: flex;
+  justify-content: center;
+`;
+
+const buttonStyle = css`
+  margin-top: 100px;
+  background-color: transparent;
+  border: 2px solid white;
+  outline: none;
+  font-size: 44px;
+  padding: 20px 70px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  :hover {
+    background-color: #333333;
+    color: white;
+    border: #333333;
+  }
+`;
+
+const smallArrow = css`
+  width: 25px;
+`;

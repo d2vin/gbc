@@ -1,23 +1,39 @@
-@font-face {
-  font-family: Regular;
-  src: url("../public/HelveticaNeue.ttf");
-}
-
-@font-face {
-  font-family: Regular;
-  font-weight: bold;
-  src: url("../public/HelveticaNeue.ttf");
-}
-
 * {
   box-sizing: border-box;
+}
+
+.EasyMDEContainer .editor-toolbar {
+  border: none;
+}
+
+.EasyMDEContainer .CodeMirror {
+  border: none !important;
+  background: none;
+}
+
+.editor-preview {
+  background-color: white !important;
+}
+
+.CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
+  background-color: transparent !important;
+}
+
+pre {
+  padding: 20px;
+  background-color: #efefef;
+}
+
+blockquote {
+  border-left: 5px solid #ddd;
+  padding-left: 20px;
+  margin-left: 0px;
 }
 
 body {
   margin: auto;
   width: 90%;
   padding: 0;
-  /* background: linear-gradient(-45deg, #5d0ced, rgb(26, 0, 128)); */
   background: #5d0ced;
   background-position: center center;
   background-repeat: no-repeat;
@@ -38,7 +54,7 @@ body {
 .brand-title {
   display: flex;
   align-items: center;
-  font-family: "Regular", sans-serif;
+  -family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: white;
@@ -60,7 +76,7 @@ body {
 }
 
 .navbar-links li a {
-  font-family: "Roboto Mono", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 16px;
   text-decoration: none;
@@ -123,5 +139,3 @@ body {
     display: flex;
   }
 }
-
-
