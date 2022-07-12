@@ -126,13 +126,13 @@ const buttonStyle = css`
   padding: 20px 70px;
   border-radius: 15px;
   cursor: pointer;
-  color: #333333;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-around;
   :hover {
-    background-color: #333333;
-    color: white;
+    background-color: white;
+    color: #5d0ced;
     border: #333333;
   }
 `;
